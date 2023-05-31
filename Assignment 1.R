@@ -2,22 +2,6 @@ library(tidyverse)
 library(rvest)
 
 
-# Question E
-
-html_e <- read_html("https://editorial.rottentomatoes.com/guide/best-netflix-movies-to-watch-right-now/")
-Movie_Ranking <- html_e %>% html_elements(".countdown-index") %>% html_text() 
-Movie_name <- html_e %>% html_elements(".article_movie_title a") %>% html_text()
-movie_year <- html_e %>% html_elements(".subtle.start-year") %>% html_text() %>%
-  substr(2, 5) %>% as.numeric()
-movie_ratings <- html %>% html_elements(".tMeterScore") %>% html_text() 
-
-movie_data <- data.frame( "Ranking" = Movie_Ranking, "name" = Movie_name, "year" = movie_year,
-                          "rating" = movie_ratings)
-movie_data
-
-
-
-
 # Question A
 
 html_a <- read_html("https://www.moneyworks4me.com/best-index/nse-stocks/top-nifty50-companies-list/")
@@ -34,10 +18,6 @@ p/BV <- html_a %>% html_elements("")
 EV/EBITDA <- html_a %>% html_elements("")
 YSales_5yr  <- html_a %>% html_elements("")
 YProfit_5yr  <- html_a %>% html_elements("")
-
-
-
-
 
 
 # Question C
@@ -75,9 +55,6 @@ for(i in 1:1000)
 
 ans <- mean(matches)
 ans
-
-
-
 
 # Question D
 
@@ -121,7 +98,18 @@ probability <- num_wins / num_simulations
 
 
 
+# Question E
+
+html_e <- read_html("https://editorial.rottentomatoes.com/guide/best-netflix-movies-to-watch-right-now/")
+Movie_Ranking <- html_e %>% html_elements(".countdown-index") %>% html_text() 
+Movie_name <- html_e %>% html_elements(".article_movie_title a") %>% html_text()
+movie_year <- html_e %>% html_elements(".subtle.start-year") %>% html_text() %>%
+  substr(2, 5) %>% as.numeric()
+movie_ratings <- html %>% html_elements(".tMeterScore") %>% html_text() 
+
+movie_data <- data.frame( "Ranking" = Movie_Ranking, "name" = Movie_name, "year" = movie_year,
+                          "rating" = movie_ratings)
+movie_data
 
 
 
-\
